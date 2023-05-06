@@ -18,12 +18,14 @@ let seattle = {
   },
 
   cookiePurchase: [],
+  totalCookies: 0,
 
   render: function () {
     // this.getNum();
     for (let i = 0; i < hours.length; i++) {
       let cookiesBought = (this.avgCookieSale * this.getNum());
       console.log(cookiesBought);
+      this.totalCookies += cookiesBought;
       this.cookiePurchase.push(cookiesBought);
       // let totalCookies = this.cookiePurchase
       // let totalCookies = 0;
@@ -34,6 +36,7 @@ let seattle = {
     }
     console.log(this.cookiePurchase);
     // console.log(this.totalCookies);
+    console.log('TotalSales:', this.totalCookies);
 
   },
 };
