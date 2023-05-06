@@ -39,9 +39,12 @@ Storedata.prototype.render = function () {
   console.log(this.cookiePurchase);
   console.log('TotalSales:', this.totalCookies);
 
+  let articleEl = document.createElement('article');
+  storeSection.appendChild(articleEl);
+
   let storeTitle = document.createElement('h2');
   storeTitle.textContent = this.name;
-  storeSection.appendChild(storeTitle);
+  articleEl.appendChild(storeTitle);
 
   let saleList = document.createElement('ul');
   storeSection.appendChild(saleList);
@@ -54,6 +57,19 @@ Storedata.prototype.render = function () {
   let salesTotal = document.createElement('li');
   salesTotal.textContent = `Total Sales: ${this.totalCookies}`;
   saleList.appendChild(salesTotal);
+
+  let table = document.createElement('table');
+  articleEl.appendChild(table);
+
+  let rowTitles = document.createElement('tr');
+  table.appendChild(rowTitles);
+
+  let startCell = document.createElement('th');
+  rowTitles.appendChild(startCell);
+
+  // for (i = 0; i < hours.length; i++);
+
+
 };
 
 let seattle = new Storedata('Seattle', 23, 65, 6.3);
