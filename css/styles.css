@@ -26,12 +26,15 @@ h3{
   text-align: center;
 }
 
+
+
 ul{
   background-color: white;
 }
 
 ul p{
   text-align: center;
+  margin-top: 50px;
 }
 
 
@@ -42,6 +45,9 @@ li{
 }
 
 p {
+  margin-left: 80px;
+  margin-right: 80px;
+  margin-top: 20px;
   margin-bottom: 30px;
   color: salmon;
 }

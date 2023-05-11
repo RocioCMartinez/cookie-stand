@@ -4,7 +4,8 @@
 //UNIVERSAL CODE//
 let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 const storeArray = [];
-const hrTotal = [];
+// let hourlyTotal = [];
+
 
 
 //WINDOW INTO SALES.HTML DOCUMENT//
@@ -108,16 +109,32 @@ function tableFooter() {
   let startCell = document.createElement('th');
   startCell.textContent = 'Hourly Totals';
   footerRow.appendChild(startCell);
-  for (let i = 0; i <hours.length + 1; i++) {
-    let startCell = document.createElement('td');
-    footerRow.appendChild(startCell);
+
+  let grandTotal = 0;
+  for (let i = 0; i < hours.length; i++) {
+    let hourlyTotal = 0;
+    for (let j = 0; j < storeArray.length; j++){
+      hourlyTotal += storeArray[j].cookiePurchase[i];
+      grandTotal += storeArray[j].cookiePurchase[i];
+    }
+    let totalCells = document.createElement('td');
+    totalCells.textContent = hourlyTotal;
+    footerRow.appendChild(totalCells);
   }
+
+  let grandCell = document.createElement('td');
+  grandCell.textContent = grandTotal;
+  footerRow.appendChild(grandCell);
+
+  // let ftrTotal = 0;
+
   // for (let i = 0; i < storeArray.length; i++){
-  //   let hourlyTotal = 0;
+  //   ftrTotal += storeArray[i].cookiePurchase;
   //   for (let j = 0; j < storeArray[i].cookiePurchase.length; j++){
-  //     hourlyTotal += storeArray[i].cookiePurchase[j];
-  //     // console.log()
+  //     hourlyTotal.push += storeArray[i].cookiePurchase[j];
+  //     // hourlyTotal[j].push(ftrTotal);
   //   }
+  // }
   //   console.log(`Here ${hourlyTotal}`);
   // }
   // for (let i = 0; i < hours.length; i++){
@@ -128,6 +145,7 @@ function tableFooter() {
   //   }
   // }
 }
+
 //EXECUTABLE CODE//
 
 let seattle = new Storedata('Seattle', 23, 65, 6.3);
