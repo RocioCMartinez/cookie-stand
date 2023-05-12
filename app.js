@@ -62,14 +62,22 @@ function handleSubmit(event){
 
   //GRAB THE VALUES FROM FORM BY NAME //
   let storename = event.target.storename.value;
-  let minCust =  typeof +event.target.minCust.value;
-  let maxCust =  typeof +event.target.maxCust.value;
-  let avgCookie = typeof +event.target.avgCookie.value;
+  let minCust = +event.target.minCust.value;
+  let maxCust = +event.target.maxCust.value;
+  let avgCookie = +event.target.avgCookie.value;
 
   //PUT VALUES IN CONSTRUCTOR FOR NEW STORE //
   let newStore = new Storedata(storename, minCust, maxCust, avgCookie);
   storeArray.push(newStore);
+
+  let table = document.querySelector('table');
+  table.deleteRow(table.rows.length - 1);
+
   newStore.render();
+
+  tableFooter();
+
+  myForm.reset();
 
 }
 // EVENT LISTENER //
@@ -139,7 +147,7 @@ function tableFooter() {
   }
 
   let grandCell = document.createElement('td');
-  grandCell.textContent = grandTotal;
+  grandCell.textContent = `Grand Total: ${grandTotal}`;
   footerRow.appendChild(grandCell);
 
 }
@@ -157,9 +165,7 @@ let paris = new Storedata('Paris', 20, 38, 2.3);
 let lima = new Storedata('Lima', 2, 16, 4.6);
 
 storeArray.push(seattle, tokyo, dubai, paris, lima);
+
 tableStart();
 renderAll();
 tableFooter();
-
-
-
