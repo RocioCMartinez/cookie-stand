@@ -1,23 +1,23 @@
-# Cookie-Stand Lab-06
+# Cookie-Stand Lab 06-10
 
-## Project Name
+## Salmon-Cookies
 
-I build an app with a direct and powerful purpose. It does all of the things that it accomplishes well. I should describe the purpose and functionality so those that visit my README understand the app
+Built website for cookie business of Pat Patterson. Front end page descibes owner and store location information. Sales page displays sales data and has form for new store submissions.
 
-### Author: Student/Group Name
+### Author: Rocio Martinez / Alex Chao, Jennifer Sung
 
 ### Links and Resources
 
-* [submission PR](http://xyz.com)
-* Any Links you used as reference
+* [Mdn Web Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor)
+* [W3 Schools](https://www.w3schools.com/w3css/defaulT.asp)
+* [Google Fonts](https://fonts.google.com/specimen/Poltawski+Nowy)
 
 ### Lighthouse Accessibility Report Score
 
 * [lighthouse Report](image/CookieStandLighthouse.png)
 * [lab9 Report](image/Lab9Lighthouse.png)
+* [lab10 Report](image/Lab10bReport.png)
 
 ### Reflections and Comments
 
-* Consider including the answers to your daily journal and submission questions here
-
-* This is also a good place to reflect on the tools and resources used and learned
+* Challenged to create a double loop and self-adjusting table based on form input
