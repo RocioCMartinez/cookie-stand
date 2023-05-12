@@ -4,12 +4,15 @@
 //UNIVERSAL CODE//
 let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 const storeArray = [];
-// let hourlyTotal = [];
+
+// Form Listener //
+let myForm = document.getElementById('store-form');//Window to HTML element//
 
 
 
 //WINDOW INTO SALES.HTML DOCUMENT//
 let storeSection = document.getElementById('stores');
+
 
 
 //FUNCTION FOR HEADER ROW//
@@ -33,7 +36,7 @@ function tableStart() {
   firstRow.textContent = 'Daily Location Totals';
   rowTitles.appendChild(firstRow);
 }
-//OJECT CONSTRUCTOR//
+//OBJECT CONSTRUCTOR//
 function Storedata(name, minCustomer, maxCustomer, avgCookieSale) {
   this.name = name;
   this.minCustomer = minCustomer;
@@ -43,12 +46,35 @@ function Storedata(name, minCustomer, maxCustomer, avgCookieSale) {
   this.cookiePurchase = [];
   this.totalCookies = 0;
 }
-// FUNCTION TO CALL ALL STORES//
+
+
+// FUNCTION TO CALL ALL STORES-HELPER FUNCTION//
 function renderAll() {
   for (let i = 0; i < storeArray.length; i++) {
     storeArray[i].render();
   }
 }
+
+
+//CALLBACK FUNCTION//
+function handleSubmit(event){
+  event.preventDefault();
+
+  //GRAB THE VALUES FROM FORM BY NAME //
+  let storename = event.target.storename.value;
+  let minCust =  typeof +event.target.minCust.value;
+  let maxCust =  typeof +event.target.maxCust.value;
+  let avgCookie = typeof +event.target.avgCookie.value;
+
+  //PUT VALUES IN CONSTRUCTOR FOR NEW STORE //
+  let newStore = new Storedata(storename, minCust, maxCust, avgCookie);
+  storeArray.push(newStore);
+  newStore.render();
+
+}
+// EVENT LISTENER //
+myForm.addEventListener('submit', handleSubmit);
+
 
 //PROTOTYPE METHODS//
 Storedata.prototype.randomNumCustomer = function (min, max) {
@@ -79,16 +105,6 @@ Storedata.prototype.render = function () {
   console.log(this.cookiePurchase);
   console.log('TotalSales:', this.totalCookies);
 
-  // let articleEl = document.createElement('article');
-  // storeSection.appendChild(articleEl);
-
-  // let storeTitle = document.createElement('h2');
-  // storeTitle.textContent = this.name;
-  // articleEl.appendChild(storeTitle);
-
-  // let saleList = document.createElement('ul');
-  // storeSection.appendChild(saleList);
-
   for (let i = 0; i < this.cookiePurchase.length; i++) {
     let cookieSale = document.createElement('td');
     cookieSale.textContent = `${this.cookiePurchase[i]} `;
@@ -113,7 +129,7 @@ function tableFooter() {
   let grandTotal = 0;
   for (let i = 0; i < hours.length; i++) {
     let hourlyTotal = 0;
-    for (let j = 0; j < storeArray.length; j++){
+    for (let j = 0; j < storeArray.length; j++) {
       hourlyTotal += storeArray[j].cookiePurchase[i];
       grandTotal += storeArray[j].cookiePurchase[i];
     }
@@ -126,24 +142,6 @@ function tableFooter() {
   grandCell.textContent = grandTotal;
   footerRow.appendChild(grandCell);
 
-  // let ftrTotal = 0;
-
-  // for (let i = 0; i < storeArray.length; i++){
-  //   ftrTotal += storeArray[i].cookiePurchase;
-  //   for (let j = 0; j < storeArray[i].cookiePurchase.length; j++){
-  //     hourlyTotal.push += storeArray[i].cookiePurchase[j];
-  //     // hourlyTotal[j].push(ftrTotal);
-  //   }
-  // }
-  //   console.log(`Here ${hourlyTotal}`);
-  // }
-  // for (let i = 0; i < hours.length; i++){
-  //   let hourlyTotal = 0;
-  //   for (let j = 0; j < storeArray.cookiePurchase.length; j++){
-  //     hourlyTotal += storeArray[i].cookiePurchase[j];
-  //     hrTotal.push(hourlyTotal);
-  //   }
-  // }
 }
 
 //EXECUTABLE CODE//
@@ -162,3 +160,6 @@ storeArray.push(seattle, tokyo, dubai, paris, lima);
 tableStart();
 renderAll();
 tableFooter();
+
+
+
